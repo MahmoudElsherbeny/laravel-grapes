@@ -41,12 +41,11 @@ class LaravelGrapesServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/assets/css/laravel-grapes.css' => base_path('public/css/laravel-grapes.css'),
                 __DIR__.'/../database/migrations/2022_11_27_020138_create_pages_table.php' => database_path('/migrations/'.date('Y_m_d_His', time()).'_create_pages_table.php'),
                 __DIR__.'/../database/migrations/2022_12_06_015222_create_page_builder_custome_blocks_table.php' => database_path('/migrations/'.date('Y_m_d_His', time()).'_create_page_builder_custome_blocks_table.php'),
-                __DIR__.'/../routes/page-builder.php' => base_path('routes/page-builder.php'),
 
             ], '*');
-
-            $this->registerRoutes();
         }
+
+        $this->registerRoutes();
     }
 
     protected function registerRoutes()
@@ -57,6 +56,9 @@ class LaravelGrapesServiceProvider extends ServiceProvider
         if (! file_exists($webRoutesPath)) {
             return;
         }
+
+        copy(__DIR__.'/../routes/page-builder.php', base_path('routes/page-builder.php'));
+
         
         $webRoutesContent  = file_get_contents($webRoutesPath);
         
