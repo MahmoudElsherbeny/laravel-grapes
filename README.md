@@ -1,8 +1,8 @@
 <p align="center"><img src="./laravel-grapes-logo.png" width="300"></p>
 <p align="center">
-<img alt="GitHub" src="https://img.shields.io/github/license/allamo123/laravel-grapes?color=%23000&style=mit">
+<img alt="GitHub" src="https://img.shields.io/github/license/MahmoudElsherbeny/laravel-grapes?color=%23000&style=mit">
 <img alt="Total Download" src="https://img.shields.io/packagist/dm/msa/laravel-grapes">
-<img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/allamo123/laravel-grapes?include_prereleases">
+<img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/MahmoudElsherbeny/laravel-grapes?include_prereleases">
 </p>
 <p align="left"><img src="./screenshots/screenshot_01.png"></p>
 
@@ -59,6 +59,9 @@
         </ul>
     </li>
     <li>
+        <a href="#show-page-in-front">Show Page In Front</a>
+    </li>
+    <li>
         <a href="#translations">Translations</a>
     </li>
     <li>
@@ -72,9 +75,9 @@
 
 ## About Laravel Grapes
 
-Laravel Grapes is a library for laravel framework, that offer cms drag and drop page builder for frontend which support all Laravel functionality and help user to change all frontend and content just in simple clicks.
+This Package is forked from main package: (https://github.com/allamo123/laravel-grapes)
 
-Laravel Grapes Comes With A Pro Version Will Be Available On [Code Canyon](https://codecanyon.net/) SOON !.
+Laravel Grapes is a library for laravel framework, that offer cms drag and drop page builder for frontend which support all Laravel functionality and help user to change all frontend and content just in simple clicks.
 
 <hr>
 
@@ -95,7 +98,7 @@ Laravel Grapes Comes With A Pro Version Will Be Available On [Code Canyon](https
 ## Installation Steps
 
 ```jsx 
-composer require msa/laravel-grapes
+composer require MahmoudElsherbeny/laravel-grapes
 ```
 ```jsx 
 php artisan vendor:publish --provider="MSA\LaravelGrapes\LaravelGrapesServiceProvider" --tag="*"
@@ -112,12 +115,12 @@ php artisan migrate
     <?php
 
     return [
-        // routes configurations
-        'builder_prefix' => 'hello', // prefix for builder
+        // routes for builder configurations
+        'routes' => [
+          'prefix' => 'builder',
 
-        'middleware' => null, // middleware for builder
-
-        'frontend_prefix' => '', // prefix for frontend
+          'middleware' => null,
+        ],
 
         /* Define additional translation languages. */
         'languages' => [
@@ -127,19 +130,16 @@ php artisan migrate
     ];`
 ```
 
-##### 1) builder_prefix
-The builder by default come with route <code>route('website.builder')</code> which consists of   [your-domain.com/hello/front-end-builder](#1-builder_prefix).<br>
-you can change the builder prefix to hi so now the builder load with route prefix hi instead of hello.<br>
+##### 1) routes.prefix
+The builder by default come with route <code>route('page-builder.index')</code> which consists of   [your-domain.com/builder/page-builder](#1-builder_prefix).<br>
+you can change the builder prefix to what you want so now the builder load with your new route prefix instead of builder.<br>
 
-##### 2) middleware
+##### 2) routes.middleware
 Assign any middleware you want to the builder for example auth:admin.
-
-##### 3) frontend_prefix
-The frontend prefix by default it comes empty that mean that any generated front end page builder it load directly with your slug that created by you so if you need to set prefix for your generated frontend so change it to your prefix that you want. <br>
 
 Now laravel grapes is working.
 
-Navigate to builder route [your-domain.com/builder_prefix/front-end-builder](#1-builder_prefix).
+Navigate to builder route [your-domain.com/builder_prefix/page-builder](#1-builder_prefix).
 
 <p align="left"><img src="./screenshots/screenshot_02.png"></p>
 
@@ -197,7 +197,7 @@ The create new page button at topbar when you press on it, the popup modal open 
 <p align="left"><img src="./screenshots/screenshot_03.png" width="790"></p><br>
 After submit the form will receive toast notification that page has been created successfully, so select the new page throw select page input on the top bar to start modifying the page.<br><br>
 
-Don't forget to remove the default route in routes/web.php becaues it will conflict with home page, you don't need web.php for frontend routes because laravel grapes come with it own route file
+Don't forget to handle routes in routes/web.php , laravel grapes come with it own route file in page-builder.php
 
 ``` jsx
 <?php
@@ -218,6 +218,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+require __DIR__.'/page-builder.php'; 
 
 ``` 
 <br>
@@ -368,9 +370,38 @@ Go to public/css/laravel-grapes.css and start Customizing Laravel Grapes Builder
 ## Translations
 Each text component have translation input trait for your languages that you were defined in [config/lg.php](#go-to-configlgphp),  In the example below you will find Ar Local and Es Local .<br>
 
-###### It supported rtl for arabic language (ar)
+## Show Page In Front
+Add your custom route for show page.<br>
 
-<p align="left"><img src="./screenshots/translation-screenshot.png" width="790"></p><br>
+web.php
+``` jsx
+
+    Route::get('{page:slug}', [PageController::class, 'index']);
+
+```
+
+in your controller add show page method
+``` jsx
+
+    public function index(Page $page)
+    {
+        if (! $page->is_active) {
+            return abort(404);
+        }
+
+        return view('website.pages.page')->with([
+            'page' => $page,
+        ]);
+    }
+```
+
+create your own custom page view and use those to show page styles and html content
+``` jsx
+
+    {!! $page->styles !!}
+
+    {!! $page->html !!}
+```
 
 ## Author
 
