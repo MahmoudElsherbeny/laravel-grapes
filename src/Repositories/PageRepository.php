@@ -8,16 +8,15 @@ use MSA\LaravelGrapes\Services\GenerateFrontEndService;
 
 class PageRepository implements PageRepositoryInterface
 {
-    private $generate_frontend_service;
-
-    public function __construct(GenerateFrontEndService $generate_frontend_service)
+    public function __construct(
+        private GenerateFrontEndService $generateFrontendService)
     {
-        $this->generate_frontend_service = $generate_frontend_service;
+        //
     }
 
     public function getAllPages()
     {
-        $pages = Page::select('id', 'name', 'slug')->get();
+        $pages = Page::select('id', 'name', 'slug', 'is_active')->get();
         return $pages;
     }
 
@@ -30,7 +29,6 @@ class PageRepository implements PageRepositoryInterface
     {
         $page = Page::findOrFail($id);
         $page->delete();
-        $this->generate_frontend_service->destroyPage($page);
     }
 
     public function createPage(array $pageDetails)
@@ -42,11 +40,7 @@ class PageRepository implements PageRepositoryInterface
     {
         $page = Page::findOrFail($id);
 
-        $old_slug = $page->slug;
-
         $page->update($newPageDetails);
-
-        $this->generate_frontend_service->updateRouteName($old_slug, $page->slug);
 
         return [
             'success' => true,
@@ -58,7 +52,6 @@ class PageRepository implements PageRepositoryInterface
     {
         $page = Page::findOrfail($id);
         $page->update($newPageContent);
-        $this->generate_frontend_service->generatePage($page);
         return $page;
     }
 }
