@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->json('page_data')->nullable();
+            $table->boolean('is_active')->default('false');
             $table->timestamps();
         });
     }

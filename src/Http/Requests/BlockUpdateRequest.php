@@ -26,7 +26,7 @@ class BlockUpdateRequest extends FormRequest
         $id = (int)$this->route()->id;
 
         return [
-            'name' => ['required', 'string', 'unique:custome_blocks,name,'.$id],
+            'name' => ['required', 'string', 'unique:page_builder_custome_blocks,name,'.$id],
         ];
     }
 }

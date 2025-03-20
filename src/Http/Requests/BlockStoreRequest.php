@@ -24,7 +24,7 @@ class BlockStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'       => ['required', 'string', 'unique:custome_blocks,name'],
+            'name'       => ['required', 'string', 'unique:page_builder_custome_blocks,name'],
             'block_data' => ['required'],
         ];
     }
