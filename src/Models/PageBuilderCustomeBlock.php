@@ -5,7 +5,7 @@ namespace MahmoudElsherbeny\LaravelGrapes\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomeBlock extends Model
+class PageBuilderCustomeBlock extends Model
 {
     use HasFactory;
 
