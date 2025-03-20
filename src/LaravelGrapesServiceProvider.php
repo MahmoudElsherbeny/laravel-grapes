@@ -4,7 +4,6 @@ namespace MSA\LaravelGrapes;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use MSA\LaravelGrapes\Middleware\HandleInertiaRequests;
 use MSA\LaravelGrapes\Interfaces\PageRepositoryInterface;
 use MSA\LaravelGrapes\Repositories\PageRepository;
 use MSA\LaravelGrapes\Interfaces\BlockRepositoryInterface;
@@ -32,48 +31,41 @@ class LaravelGrapesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerRoutes();
-
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'lg');
 
         if ($this->app->runningInConsole()) {
 
             $this->publishes([
-
+                
                 __DIR__.'/../config/config.php' => config_path('lg.php'),
                 __DIR__.'/../resources/assets/js/PageBuilder.js' => base_path('public/js/laravel-grapes.js'),
                 __DIR__.'/../resources/assets/css/laravel-grapes.css' => base_path('public/css/laravel-grapes.css'),
                 __DIR__.'/../database/migrations/2022_11_27_020138_create_pages_table.php' => database_path('/migrations/'.date('Y_m_d_His', time()).'_create_pages_table.php'),
                 __DIR__.'/../database/migrations/2022_12_06_015222_create_custome_blocks_table.php' => database_path('/migrations/'.date('Y_m_d_His', time()).'_create_custome_blocks_table.php'),
+                __DIR__.'/../routes/page-builder.php' => base_path('routes/page-builder.php'),
 
             ], '*');
+
+            $this->registerRoutes();
         }
     }
 
     protected function registerRoutes()
     {
-        Route::group($this->routeBuilderConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
+        $webRoutesPath = base_path('routes/web.php');
+        $pageBuilderRoute = "require __DIR__.'/page-builder.php';";
 
-        Route::group($this->routeFrontendConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/frontend.php');
-        });
-    }
+        if (! file_exists($webRoutesPath)) {
+            return;
+        }
+        
+        $webRoutesContent  = file_get_contents($webRoutesPath);
+        
+        if (str_contains($webRoutesContent, $pageBuilderRoute)) {
+            return;
+        }
 
-    protected function routeBuilderConfiguration()
-    {
-        return [
-            'prefix' => config('lg.builder_prefix'),
-            'middleware' => null,
-        ];
-    }
-
-    protected function routeFrontendConfiguration()
-    {
-        return [
-            'prefix' => config('lg.frontend_prefix'),
-            'middleware' => 'web',
-        ];
+        $webRoutesContent .= PHP_EOL . $pageBuilderRoute . PHP_EOL;
+        file_put_contents($webRoutesPath, $webRoutesContent);
     }
 }

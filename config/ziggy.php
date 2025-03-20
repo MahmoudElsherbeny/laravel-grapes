@@ -2,16 +2,16 @@
 
 return [
     'only' => [
-        'new_page.store',
-        'update.page_content',
-        'page.find',
-        'custome_component.store',
-        'page.all',
-        'update.page',
-        'page.delete',
-        'custome_component.store',
-        'custome_component.all',
-        'update.component',
-        'component.delete'
+        'page-builder.page.store',
+        'page-builder.page.update',
+        'page-builder.page.find',
+        'page-builder.page.all',
+        'page-builder.page.delete',
+        'page-builder.update.page_content',
+        'page-builder.custome_component.store',
+        'page-builder.custome_component.store',
+        'page-builder.custome_component.all',
+        'page-builder.custome_component.update',
+        'page-builder.custome_component.delete'
     ],
 ];

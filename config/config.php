@@ -1,14 +1,13 @@
 <?php
 
 return [
-    // routes configurations
-    'builder_prefix' => 'hello', // prefix for builder
+    // builder routes configurations
+    'routes' => [
+        'prefix' => 'builder',
 
-    'middleware' => null, // middleware for builder
-
-    'frontend_prefix' => '', // prefix for frontend
+        'middleware' => null,        
+    ],
 
     /* Define additional translation languages. */
     'languages' => [],
-
 ];
