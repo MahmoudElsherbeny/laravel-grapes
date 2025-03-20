@@ -1,13 +1,13 @@
 <?php
 
-namespace MSA\LaravelGrapes\Http\Controllers;
+namespace MahmoudElsherbeny\LaravelGrapes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MSA\LaravelGrapes\Http\Requests\PageStoreRequest;
-use MSA\LaravelGrapes\Http\Requests\PageUpdateRequest;
-use MSA\LaravelGrapes\Http\Requests\PageUpdateContentRequest;
-use MSA\LaravelGrapes\Http\Controllers\Controller;
-use MSA\LaravelGrapes\Interfaces\PageRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Http\Requests\PageStoreRequest;
+use MahmoudElsherbeny\LaravelGrapes\Http\Requests\PageUpdateRequest;
+use MahmoudElsherbeny\LaravelGrapes\Http\Requests\PageUpdateContentRequest;
+use MahmoudElsherbeny\LaravelGrapes\Http\Controllers\Controller;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\PageRepositoryInterface;
 
 class PageController extends Controller
 {

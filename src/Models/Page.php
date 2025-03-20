@@ -1,11 +1,11 @@
 <?php
 
-namespace MSA\LaravelGrapes\Models;
+namespace MahmoudElsherbeny\LaravelGrapes\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use MSA\LaravelGrapes\Services\GenerateFrontEndService;
+use MahmoudElsherbeny\LaravelGrapes\Services\GenerateFrontEndService;
 
 class Page extends Model
 {

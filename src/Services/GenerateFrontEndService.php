@@ -1,6 +1,6 @@
 <?php
 
-namespace MSA\LaravelGrapes\Services;
+namespace MahmoudElsherbeny\LaravelGrapes\Services;
 
 // use simplehtmldom\HtmlDocument;
 use voku\helper\HtmlDomParser;

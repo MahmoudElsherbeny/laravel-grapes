@@ -1,9 +1,9 @@
 <?php
 
-namespace MSA\LaravelGrapes\Repositories;
+namespace MahmoudElsherbeny\LaravelGrapes\Repositories;
 
-use MSA\LaravelGrapes\Interfaces\BlockRepositoryInterface;
-use MSA\LaravelGrapes\Models\CustomeBlock;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\BlockRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Models\CustomeBlock;
 
 class BlockRepository implements BlockRepositoryInterface {
 

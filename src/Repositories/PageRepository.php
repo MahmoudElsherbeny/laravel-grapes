@@ -1,10 +1,10 @@
 <?php
 
-namespace MSA\LaravelGrapes\Repositories;
+namespace MahmoudElsherbeny\LaravelGrapes\Repositories;
 
-use MSA\LaravelGrapes\Interfaces\PageRepositoryInterface;
-use MSA\LaravelGrapes\Models\Page;
-use MSA\LaravelGrapes\Services\GenerateFrontEndService;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\PageRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Models\Page;
+use MahmoudElsherbeny\LaravelGrapes\Services\GenerateFrontEndService;
 
 class PageRepository implements PageRepositoryInterface
 {

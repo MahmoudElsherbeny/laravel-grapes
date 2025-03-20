@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use MSA\LaravelGrapes\Http\Controllers\PageController;
-use MSA\LaravelGrapes\Http\Controllers\BlockController;
+use MahmoudElsherbeny\LaravelGrapes\Http\Controllers\PageController;
+use MahmoudElsherbeny\LaravelGrapes\Http\Controllers\BlockController;
 
 /*
 |--------------------------------------------------------------------------

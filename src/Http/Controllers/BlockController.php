@@ -1,12 +1,12 @@
 <?php
 
-namespace MSA\LaravelGrapes\Http\Controllers;
+namespace MahmoudElsherbeny\LaravelGrapes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MSA\LaravelGrapes\Http\Requests\BlockStoreRequest;
-use MSA\LaravelGrapes\Http\Requests\BlockUpdateRequest;
-use MSA\LaravelGrapes\Http\Controllers\Controller;
-use MSA\LaravelGrapes\Interfaces\BlockRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Http\Requests\BlockStoreRequest;
+use MahmoudElsherbeny\LaravelGrapes\Http\Requests\BlockUpdateRequest;
+use MahmoudElsherbeny\LaravelGrapes\Http\Controllers\Controller;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\BlockRepositoryInterface;
 
 class BlockController extends Controller
 {

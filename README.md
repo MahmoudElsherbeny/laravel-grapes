@@ -1,7 +1,7 @@
 <p align="center"><img src="./laravel-grapes-logo.png" width="300"></p>
 <p align="center">
 <img alt="GitHub" src="https://img.shields.io/github/license/MahmoudElsherbeny/laravel-grapes?color=%23000&style=mit">
-<img alt="Total Download" src="https://img.shields.io/packagist/dm/msa/laravel-grapes">
+<img alt="Total Download" src="https://img.shields.io/packagist/dm/mahmoudelsherbeny/laravel-grapes">
 <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/MahmoudElsherbeny/laravel-grapes?include_prereleases">
 </p>
 <p align="left"><img src="./screenshots/screenshot_01.png"></p>
@@ -101,7 +101,7 @@ Laravel Grapes is a library for laravel framework, that offer cms drag and drop 
 composer require MahmoudElsherbeny/laravel-grapes
 ```
 ```jsx 
-php artisan vendor:publish --provider="MSA\LaravelGrapes\LaravelGrapesServiceProvider" --tag="*"
+php artisan vendor:publish --provider="MahmoudElsherbeny\LaravelGrapes\LaravelGrapesServiceProvider" --tag="*"
 ```
 
 ```jsx 

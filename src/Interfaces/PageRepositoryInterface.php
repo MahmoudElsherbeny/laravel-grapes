@@ -1,6 +1,6 @@
 <?php
 
-namespace MSA\LaravelGrapes\Interfaces;
+namespace MahmoudElsherbeny\LaravelGrapes\Interfaces;
 
 interface PageRepositoryInterface
 {

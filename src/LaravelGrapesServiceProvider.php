@@ -1,13 +1,12 @@
 <?php
 
-namespace MSA\LaravelGrapes;
+namespace MahmoudElsherbeny\LaravelGrapes;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use MSA\LaravelGrapes\Interfaces\PageRepositoryInterface;
-use MSA\LaravelGrapes\Repositories\PageRepository;
-use MSA\LaravelGrapes\Interfaces\BlockRepositoryInterface;
-use MSA\LaravelGrapes\Repositories\BlockRepository;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\PageRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Repositories\PageRepository;
+use MahmoudElsherbeny\LaravelGrapes\Interfaces\BlockRepositoryInterface;
+use MahmoudElsherbeny\LaravelGrapes\Repositories\BlockRepository;
 
 class LaravelGrapesServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MSA\LaravelGrapes\Models;
+namespace MahmoudElsherbeny\LaravelGrapes\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

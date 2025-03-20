@@ -1,6 +1,6 @@
 <?php
 
-namespace MSA\LaravelGrapes\Http\Requests;
+namespace MahmoudElsherbeny\LaravelGrapes\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
